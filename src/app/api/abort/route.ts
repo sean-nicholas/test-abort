@@ -13,10 +13,13 @@ export async function GET(request: Request) {
     console.log("abort event");
   });
 
-  // setInterval(() => {
-  //   console.log("(interval) aborted:", request.signal.aborted);
-  // }, 500);
+  const interval = setInterval(() => {
+    console.log("(interval) aborted:", request.signal.aborted);
+  }, 500);
 
   await new Promise((resolve) => setTimeout(resolve, 5_000));
+  
+  clearInterval(interval);
+
   return new Response("Hello, world!");
 }
