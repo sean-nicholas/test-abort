@@ -1,5 +1,4 @@
 
-import { setTimeout } from "timers/promises";
 
 export const runtime = 'edge'
 
@@ -18,7 +17,6 @@ export async function GET(request: Request) {
     console.log("(interval) aborted:", request.signal.aborted);
   }, 500);
 
-
-  await setTimeout(5_000);
+  await new Promise((resolve) => setTimeout(resolve, 5_000));
   return new Response("Hello, world!");
 }
