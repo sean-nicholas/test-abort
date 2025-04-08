@@ -13,9 +13,9 @@ export async function GET(request: Request) {
     console.log("abort event");
   });
 
-  setInterval(() => {
-    console.log("(interval) aborted:", request.signal.aborted);
-  }, 500);
+  // setInterval(() => {
+  //   console.log("(interval) aborted:", request.signal.aborted);
+  // }, 500);
 
   await new Promise((resolve) => setTimeout(resolve, 5_000));
   return new Response("Hello, world!");
