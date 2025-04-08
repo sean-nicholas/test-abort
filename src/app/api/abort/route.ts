@@ -1,13 +1,25 @@
-import { setTimeout } from "timers/promises";
+
+
+export const runtime = 'edge'
 
 export async function GET(request: Request) {
   console.log("Here we goooooo!");
+
   request.signal.onabort = () => {
     console.log("onabort");
   };
+
   request.signal.addEventListener("abort", () => {
     console.log("abort event");
   });
-  await setTimeout(30_000);
+
+  const interval = setInterval(() => {
+    console.log("(interval) aborted:", request.signal.aborted);
+  }, 500);
+
+  await new Promise((resolve) => setTimeout(resolve, 5_000));
+  
+  clearInterval(interval);
+
   return new Response("Hello, world!");
 }
