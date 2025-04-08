@@ -4,7 +4,7 @@ export function SuperButton() {
   return (
     <button
       onClick={() => {
-        fetch("http://localhost:3000/api/abort", {
+        fetch("/api/abort", {
           method: "GET",
           signal: AbortSignal.timeout(2_000),
         });
