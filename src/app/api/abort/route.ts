@@ -1,4 +1,7 @@
+
 import { setTimeout } from "timers/promises";
+
+export const runtime = 'edge'
 
 export async function GET(request: Request) {
   console.log("Here we goooooo!");
