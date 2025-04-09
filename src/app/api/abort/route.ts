@@ -8,6 +8,16 @@ export async function GET(request: Request) {
   request.signal.addEventListener("abort", () => {
     console.log("abort event");
   });
-  await setTimeout(30_000);
-  return new Response("Hello, world!");
+
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const encoder = new TextEncoder();
+
+  writer.write(encoder.encode("Hello"));
+  setTimeout(5_000).then(() => {
+    writer.write(encoder.encode("world!"));
+    writer.close();
+  });
+
+  return new Response(readable);
 }
