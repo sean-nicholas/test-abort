@@ -15,9 +15,10 @@ export async function GET(request: Request) {
 
   writer.write(encoder.encode("Hello"));
   console.log("Sending Hello");
-  setTimeout(5_000).then(() => {
+  setTimeout(5_000).then(async () => {
     writer.write(encoder.encode("world!"));
     console.log("Sending world!");
+    console.log("Is writer closed?", await writer.closed);
     writer.close();
   });
 
