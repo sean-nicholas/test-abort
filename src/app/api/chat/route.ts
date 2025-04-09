@@ -20,6 +20,9 @@ export async function POST(req: Request) {
         console.log('text-delta', chunk.textDelta)
       }
     },
+    onError: (error) => {
+      console.log('onError', error)
+    },
   })
 
   return result.toDataStreamResponse()
