@@ -16,6 +16,11 @@ export async function POST(req: Request) {
   const result = streamText({
     model,
     messages,
+    onChunk: ({ chunk }) => {
+      if (chunk.type === 'text-delta') {
+        console.log('text-delta', chunk.textDelta)
+      }
+    },
   })
 
   return result.toDataStreamResponse()

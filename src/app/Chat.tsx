@@ -3,7 +3,7 @@
 import { useChat } from '@ai-sdk/react'
 
 export const Chat = () => {
-  const { messages, input, handleInputChange, handleSubmit } = useChat({})
+  const { messages, input, handleInputChange, handleSubmit, stop } = useChat()
 
   return (
     <>
@@ -23,6 +23,9 @@ export const Chat = () => {
           />
           <button type="submit" className="p-2 border">
             Submit
+          </button>
+          <button type="button" onClick={stop} className="p-2 border">
+            Stop
           </button>
         </form>
       </div>
