@@ -18,7 +18,6 @@ export async function GET(request: Request) {
   setTimeout(5_000).then(async () => {
     writer.write(encoder.encode("world!"));
     console.log("Sending world!");
-    console.log("Is writer closed?", await writer.closed);
     writer.close();
   });
 
