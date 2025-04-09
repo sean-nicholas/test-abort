@@ -23,6 +23,7 @@ export async function POST(req: Request) {
     onError: (error) => {
       console.log('onError', error)
     },
+    abortSignal: req.signal,
   })
 
   return result.toDataStreamResponse()
