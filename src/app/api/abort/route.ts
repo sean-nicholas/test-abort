@@ -14,8 +14,10 @@ export async function GET(request: Request) {
   const encoder = new TextEncoder();
 
   writer.write(encoder.encode("Hello"));
+  console.log("Sending Hello");
   setTimeout(5_000).then(() => {
     writer.write(encoder.encode("world!"));
+    console.log("Sending world!");
     writer.close();
   });
 
