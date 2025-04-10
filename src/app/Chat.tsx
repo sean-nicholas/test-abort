@@ -27,6 +27,42 @@ export const Chat = () => {
           <button type="button" onClick={stop} className="p-2 border">
             Stop
           </button>
+          <button
+            type="button"
+            onClick={() => {
+              handleSubmit()
+              setTimeout(() => {
+                stop()
+              }, 200)
+            }}
+            className="p-2 border"
+          >
+            Submit and Stop after 200ms
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              handleSubmit()
+              setTimeout(() => {
+                stop()
+              }, 1000)
+            }}
+            className="p-2 border"
+          >
+            Submit and Stop after 1s
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              handleSubmit()
+              setTimeout(() => {
+                stop()
+              }, 2000)
+            }}
+            className="p-2 border"
+          >
+            Submit and Stop after 2s
+          </button>
         </form>
       </div>
     </>
