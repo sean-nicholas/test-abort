@@ -13,6 +13,10 @@ const model = openrouter('google/gemini-2.0-flash-001')
 export async function POST(req: Request) {
   const { messages } = await req.json()
 
+  req.signal.addEventListener('abort', () => {
+    console.log('SIGNAL ABORT')
+  })
+
   const result = streamText({
     model,
     messages,
